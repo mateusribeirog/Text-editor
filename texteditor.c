@@ -29,7 +29,7 @@ lower 5 bits of a character.
 #define TAB_STOP 8
 #define SAVE_MACRO "CTRL-s"
 #define QUIT_MACRO "CTRL-q"
-#define QUIT_TIMES 2
+#define QUIT_TIMES 1
 
 enum editorKey {
     BACKSPACE = 127,
@@ -78,7 +78,7 @@ editorConfig E;
 void editorSetStatusMessage(const char *fmt, ...);
 void editorRefreshSCreen();
 char *editorPrompt(char *prompt);
-
+void editorMoveCursor(int key);
 /* TERMINAL */
 
 void die(const char *s){
