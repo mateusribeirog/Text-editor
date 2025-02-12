@@ -594,7 +594,10 @@ void editorMoveCursor(int key){
             if(E.cy != 0) E.cy--;
             break;
         case ARROW_DOWN:
-            if(E.cy < E.numrows) E.cy++;
+            if(E.cy < E.numrows){
+                E.cy++;
+                E.cx = 0;
+            }
             break;
     }
 
