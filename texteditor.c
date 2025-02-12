@@ -549,7 +549,7 @@ void editorProcessKeypress(){
             editorMoveCursor(c);
             break;
 
-        case 'r':
+        case '\r':
             editorInsertNewline();
             break;  
              
@@ -733,7 +733,9 @@ void editorSetStatusMessage(const char *fmt,...){
 
 //Init all the fields in the E struct
 void initEditor(){
-    E.cx = E.cy = E.numrows = 0;
+    E.cx = 0;
+    E.cy = 0;
+    E.numrows = 0;
     E.rx = 0;
     E.rowoffset = E.coloffset = 0;
     E.row = NULL;
@@ -747,14 +749,13 @@ void initEditor(){
     E.dirty = 0;
 }
 
-int main(int argc, char **argv){
+int main(int argc, char *argv[]){
 
     enableRawMode();
     initEditor();
     if(argc>=2)editorOpen(argv[1]);
 
     editorSetStatusMessage("Ctrl-Q = quit | Ctrl-S = save");
-    char c;
     while (1) {
         editorRefreshSCreen();
         editorProcessKeypress();
